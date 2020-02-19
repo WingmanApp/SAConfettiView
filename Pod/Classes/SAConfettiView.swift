@@ -22,7 +22,7 @@ public class SAConfettiView: UIView {
     var emitter: CAEmitterLayer!
     public var colors: [UIColor]!
     public var intensity: Float!
-    public var type: ConfettiType!
+    public var types = [ConfettiType]()
     private var active :Bool!
 
     required public init?(coder aDecoder: NSCoder) {
@@ -42,7 +42,7 @@ public class SAConfettiView: UIView {
             UIColor(red:0.30, green:0.76, blue:0.85, alpha:1.0),
             UIColor(red:0.58, green:0.39, blue:0.55, alpha:1.0)]
         intensity = 0.5
-        type = .confetti
+        types = [.confetti]
         active = false
     }
 
@@ -112,7 +112,7 @@ public class SAConfettiView: UIView {
         confetti.spinRange = CGFloat(4.0 * intensity)
         confetti.scaleRange = CGFloat(intensity)
         confetti.scaleSpeed = CGFloat(-0.1 * intensity)
-        confetti.contents = imageForType(type: type)!.cgImage
+        confetti.contents = imageForType(type: types.randomElement()!)!.cgImage
         return confetti
     }
 
