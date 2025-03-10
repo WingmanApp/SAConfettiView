@@ -13,7 +13,10 @@ let package = Package(
     targets: [
         .target(
             name: "SAConfettiView",
-            path: "SAConfettiView"
+            path: "SAConfettiView",
+            resources: [
+                 .process("Resources")
+             ]
         )
     ]
 )
